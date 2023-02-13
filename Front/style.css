@@ -1,0 +1,198 @@
+
+main {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  width: 150px;
+  margin: 10px;
+
+}
+.titulos {
+  display: flex;
+  margin-top: 50px;
+  margin-left: auto;
+}
+.empresas {
+  justify-content: space-around;
+
+  border: 1px solid black;
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 10vh;
+}
+#select {
+  justify-content: space-around;
+  min-height: 20vh;
+  height: max-content;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: green;
+
+}
+.button {
+  margin-top: 10px;
+}
+.card-columns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.card {
+  margin-top: 2vh;
+  width: 18rem;
+}
+.card img {
+  margin: 0%;
+  border: 0px;
+}
+#cartas {
+  display: flex;
+}
+.bi {
+  font-size: 50px;
+  display: none;
+}
+.bi-search {
+  margin-left: 10%;
+}
+
+/*Modal*/
+
+.modal {
+  padding: 2rem 0rem;
+  /*display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 400px;
+  }
+  .modal-dialog .modal-content {
+    padding: 1rem;
+  }
+}
+.close {
+  color: wheat;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  cursor: pointer;
+}
+.modal-header .close {
+  margin-top: -1.5rem;
+}
+
+.form-title {
+  margin: -2rem 0rem 2rem;
+}
+
+.btn-round {
+  border-radius: 3rem;
+}
+
+.delimiter {
+  padding: 1rem;
+}
+
+.social-buttons .btn {
+  margin: 0 0.5rem 1rem;
+}
+
+.signup-section {
+  padding: 0.3rem 0rem;
+}
+
+.modal-content {
+  background-color: green;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 20%; /* Could be more or less, depending on screen size */
+  min-width: fit-content;
+}
+input {
+  margin-bottom: 10px;
+}
+
+/*Chart*/
+
+.chartModal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(40, 40, 40, 0.8);
+}
+
+.chartModal-content {
+  background-color: rgb(60, 60, 60);
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid wheat;
+  width: 70% !important;
+  min-width: fit-content;
+}
+.highcharts-figure,
+.highcharts-data-table table {
+  min-width: 360px;
+  max-width: 800px;
+  margin: 1em auto;
+}
+
+.highcharts-data-table table {
+  font-family: Verdana, sans-serif;
+  border-collapse: collapse;
+  border: 1px solid #ebebeb;
+  margin: 10px auto;
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+}
+
+.highcharts-data-table caption {
+  padding: 1em 0;
+  font-size: 1.2em;
+  color: #555;
+}
+
+.highcharts-data-table th {
+  font-weight: 600;
+  padding: 0.5em;
+}
+
+.highcharts-data-table td,
+.highcharts-data-table th,
+.highcharts-data-table caption {
+  padding: 0.5em;
+}
+
+.highcharts-data-table thead tr,
+.highcharts-data-table tr:nth-child(even) {
+  background: #f8f8f8;
+}
+
+.highcharts-data-table tr:hover {
+  background: #f1f7ff;
+}

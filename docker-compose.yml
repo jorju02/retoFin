@@ -1,0 +1,80 @@
+version: "3.7"
+
+services:
+  db:
+    image: mysql:5.7
+    container_name: db
+    environment:
+      MYSQL_ROOT_PASSWORD: stocks
+      MYSQL_DATABASE: stocks
+      MYSQL_USER: stocks
+      MYSQL_PASSWORD: stocks
+    ports:
+      - "3306:3306"
+    volumes:
+      - dbdata:/var/lib/mysql
+    networks:
+      - reto
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: pma
+    links:
+      - db
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    restart: always
+    ports:
+      - 5500:80
+    networks:
+      - reto
+  api1:
+    build: ./Api
+    volumes:
+      - ./Api:/src/app
+    depends_on:
+      - db
+    networks:
+      - reto
+  api2:
+    build: ./Api
+    volumes:
+      - ./Api:/src/app
+    depends_on:
+      - db
+    networks:
+      - reto
+  front:
+    build: ./Front
+    volumes:
+      - ./Front:/var/www/html
+    networks:
+      - reto
+  generador:
+    build: ./Generador
+    volumes:
+      - ./Generador:/app
+    depends_on:
+      - db
+    networks:
+      - reto
+
+  proxy:
+    image: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    networks:
+      - reto
+    depends_on:
+      - api1
+      - api2
+      - front
+volumes:
+  dbdata:
+
+networks:
+  reto:
+    driver: bridge

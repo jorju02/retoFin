@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+
+    <link rel="stylesheet" href="style.css">
+    <title>index</title>
+</head>
+
+<body onload="inicio()">
+
+    <div class="boton">
+        <button id="logout" type="button" class="btn btn-danger btn-block btn-round"
+            onclick="logoutCheck()">Logout</button>
+    </div>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+            </div>
+            <div class="modal-body">
+                <div class="form-title text-center">
+                    <h4 id="tituloLogin">Login</h4>
+                    <h4 id="tituloRegistro" style="display: none;">Register</h4>
+                </div>
+                <div class="d-flex flex-column text-center">
+                    <form id="loginForm">
+                        <div class="signup-section">Not a member yet? <a href="#a" class="text-info"onclick="mostrarRegistro()"> Sign Up</a>.</div>
+                        <hr>
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="email1" placeholder="Your email address...">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="password1" placeholder="Your password...">
+                        </div>
+                        <div class="form-group">
+                            <div id="message1"></div>
+                        </div>
+                        <button type="button" class="btn btn-info btn-block btn-round"
+                            onclick="logincheck()">Login</button>
+
+                    </form>
+                    <form id="registerForm" style="display: none;">
+                        <div class="signup-section">Are you a member? <a href="#a" class="text-info"onclick="mostrarLogin()"> Log in</a>.</div>
+                        <hr>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="name2" placeholder="Your name...">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="email2" placeholder="Your email address...">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="password2" placeholder="Your password...">
+                        </div>
+                        <div class="form-group">
+                            <div id="message2"></div>
+                        </div>
+                        <button type="button" class="btn btn-info btn-block btn-round"
+                            onclick="registercheck()">Register</button>
+
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <main id="main">
+        <!--Todas las empresas de la api-->
+        <div class="empresas" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <img src="img/bbva.png" alt="bbva" id="bbva" draggable="true" ondragstart="drag(event), safe(this.id)">
+            <img src="img/caixabank.png" alt="caixabank" id="caixabank" draggable="true"
+                ondragstart="drag(event), safe(this.id)">
+            <img src="img/cellnex.png" alt="cellnex" id="cellnex" draggable="true"
+                ondragstart="drag(event), safe(this.id)">
+            <img src="img/ferrovial.png" alt="ferrovial" id="ferrovial" draggable="true"
+                ondragstart="drag(event), safe(this.id)">
+            <img src="img/iberdrola.png" alt="iberdrola" id="iberdrola" draggable="true"
+                ondragstart="drag(event), safe(this.id)">
+            <img src="img/inditex.png" alt="inditex" id="inditex" draggable="true"
+                ondragstart="drag(event), safe(this.id)">
+            <img src="img/naturgy.png" alt="naturgy" id="naturgy" draggable="true"
+                ondragstart="drag(event), safe(this.id)">
+            <img src="img/repsol.png" alt="repsol" id="repsol" draggable="true"
+                ondragstart="drag(event), safe(this.id)">
+            <img src="img/santander.png" alt="santander" id="santander" draggable="true"
+                ondragstart="drag(event), safe(this.id)">
+            <img src="img/telefonica.png" alt="telefonica" id="telefonica" draggable="true"
+                ondragstart="drag(event), safe(this.id)">
+        </div>
+        <!--Empresas seleccionadas-->
+        <div id="select" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+        </div>
+        <!--Boton para pedir los resultados de la api-->
+        <div class="button" id="boton">
+            <button type="submit" class="btn btn-primary" onclick="misEmpresas(), ocultarTabla()">Guardar</button>
+        </div>
+    </main>
+    </div>
+    <i class="bi bi-arrow-left-short" id="lupa" onclick="mostrarTabla()"></i>
+    <div class="card-columns" id="cartas">
+
+
+    </div>
+    <div id="chartModal" class="chartModal">
+        <!-- Modal content -->
+        <div class="chartModal-content" onload="anual()">
+            <div id="botonesChart">
+
+                <span class="close" onclick="hidechart()">&times;</span>
+            </div>
+            <figure class="highcharts-figure">
+                <div id="tablaResult">
+
+                </div>
+            </figure>
+        </div>
+
+    </div>
+
+    <!--Llamada al script-->
+    <script src="script.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.js"></script>
+
+</body>
+
+</html>
