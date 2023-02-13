@@ -374,6 +374,7 @@ function showchart(empresaSelect) {
     document.getElementsByClassName("chartModal")[0].style.display = "block";
     //console.log(empresaSelect);
     chartEmpresa = empresaSelect;
+    anual();
 }
 
 function hidechart() {
